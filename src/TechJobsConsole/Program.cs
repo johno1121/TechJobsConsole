@@ -58,6 +58,7 @@ namespace TechJobsConsole
                     Console.WriteLine("\nSearch term: ");
                     string searchTerm = Console.ReadLine();
 
+
                     List<Dictionary<string, string>> searchResults;
 
                     // Fetch results
@@ -118,20 +119,19 @@ namespace TechJobsConsole
 
         private static void PrintJobs(List<Dictionary<string, string>> someJobs)
         {
-            Console.WriteLine("*****");
-            foreach (Dictionary<string, string> item in someJobs)
+            int count = someJobs.Count;
+            if (count == 0)
             {
-                foreach (KeyValuePair<string, string> kvp in item)
-                {
-                    Console.WriteLine(kvp.Key + ":" + kvp.Value);
-                }
-
-                if (item == null)
-                    Console.WriteLine("Sorry, no jobs listed");
-                Console.WriteLine(" ");
-                Console.WriteLine("*****");
+                Console.WriteLine("Error! Error! Search found no matches! Error!");
             }
-
+                foreach (Dictionary<string, string> dictItem in someJobs)
+                {
+                    foreach (KeyValuePair<string, string> row in dictItem)
+                    {
+                    Console.WriteLine(row.Key + ":" + row.Value);
+                    }
+                Console.WriteLine("\n*****");
+                }
             //Console.WriteLine("printJobs is not implemented yet");
         }
     }
